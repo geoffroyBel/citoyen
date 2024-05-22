@@ -2,6 +2,11 @@ name: Test Boujou
 run-name: ${{ github.actor }} initializing GitHub Actions
 on: [push]
 jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output github context
+        run: echo "${{ toJSON(github) }}"
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
