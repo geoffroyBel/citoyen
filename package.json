@@ -1,6 +1,6 @@
 {
-  "name": "boujou-normandie",
-  "version": "0.1.2",
+  "name": "projet-citoyen",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
