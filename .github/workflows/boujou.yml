@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Output github context
         run: echo "${{ toJSON(github) }}"
-  check-bats-version:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,4 +18,4 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        run: npm install
+        run: npm ci
