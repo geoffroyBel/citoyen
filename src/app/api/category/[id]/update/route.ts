@@ -1,11 +1,12 @@
 import { prisma } from "@/libs";
+import { Category } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function PATCH(req: Request, params: { params: { id: string } }) {
   const id = Number.parseInt(params.params.id);
   const { name } = await req.json();
   try {
-    const categoryFind = await prisma.category.update({
+    const categoryFind: Category = await prisma.category.update({
       data: {
         name: name,
       },
