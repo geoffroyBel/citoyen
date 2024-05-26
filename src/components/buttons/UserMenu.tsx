@@ -26,7 +26,7 @@ export default function UserMenu({
             <Image
               width={36}
               height={36}
-              className="rounded-full border-2 border-gray-600 p-0.5"
+              className="rounded-full border-1 border-gray-600 p-0.5"
               src={session.user.image ?? ""}
               alt={session.user.name ?? "User"}
             />
@@ -46,16 +46,16 @@ export default function UserMenu({
               {() => (
                 <div className="text-sm px-4 pb-2">
                   <p className="font-regular">Connecté en tant que</p>
-                  <p className="font-semibold">{session.user.name}</p>
+                  <p className="font-semibold text-primary dark:text-secondary">{session.user.name}</p>
                 </div>
               )}
             </MenuItem>
             <MenuItem>
-              {({ active }) => (
+              {({ focus }) => (
                 <Link
                   href="/profile"
                   className={classNames(
-                    active ? "bg-gray-200 dark:bg-gray-700" : "",
+                    focus ? "bg-gray-200 dark:bg-gray-700" : "",
                     "block px-4 py-2 text-sm"
                   )}
                 >
@@ -64,10 +64,25 @@ export default function UserMenu({
               )}
             </MenuItem>
             <MenuItem>
-              {({ active }) => (
+              {({ focus }) => (
+                <Link
+                  href="/profile"
+                  className={classNames(
+                    focus
+                      ? "bg-blue-100 dark:bg-primary text-primary dark:text-blue-100"
+                      : "",
+                    "block px-4 py-2 text-sm cursor-pointer"
+                  )}
+                >
+                  Accès admin
+                </Link>
+              )}
+            </MenuItem>
+            <MenuItem>
+              {({ focus }) => (
                 <div
                   className={classNames(
-                    active
+                    focus
                       ? "bg-red-100 dark:bg-red-500 text-red-500 dark:text-red-100"
                       : "",
                     "block px-4 py-2 text-sm cursor-pointer"
