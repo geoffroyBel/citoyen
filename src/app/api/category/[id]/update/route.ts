@@ -4,7 +4,8 @@ import { NextResponse } from "next/server";
 
 export async function PATCH(req: Request, params: { params: { id: string } }) {
   const id = Number.parseInt(params.params.id);
-  const { name } = await req.json();
+  const data = await req.formData();
+  const { name } = Object.fromEntries(data.entries()) as unknown as Category;
   try {
     const categoryFind: Category = await prisma.category.update({
       data: {

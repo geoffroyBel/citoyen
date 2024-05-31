@@ -3,7 +3,8 @@ import { Category } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const { name } = await req.json();
+  const data = await req.formData();
+  const { name } = Object.fromEntries(data.entries()) as unknown as Category;
 
   try {
     const newCategory: Category = await prisma.category.create({
