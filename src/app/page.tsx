@@ -9,7 +9,10 @@ export const metadata: Metadata = {
 };
 
 const nunito = Nunito_Sans({ weight: "400", subsets: ["latin"] });
-const roboto = Roboto({ subsets: ["latin"], weight: ["100", "300", "400", "500", "700", "900"] });
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700", "900"],
+});
 
 export default function Home() {
   return (
@@ -19,7 +22,7 @@ export default function Home() {
           <Image
             src={Logo}
             alt="Logo"
-            width={99}  
+            width={99}
             height={99}
             className="dark:invert mt-[-64px] z-10"
           />

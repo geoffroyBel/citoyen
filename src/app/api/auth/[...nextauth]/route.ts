@@ -1,6 +1,8 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider, { GoogleProfile } from "next-auth/providers/google";
-import FacebookProvider, { FacebookProfile } from "next-auth/providers/facebook";
+import FacebookProvider, {
+  FacebookProfile,
+} from "next-auth/providers/facebook";
 
 export const authOptions: AuthOptions = {
   session: {
@@ -16,10 +18,9 @@ export const authOptions: AuthOptions = {
           name: `${profile.given_name} ${profile.family_name}`,
           email: profile.email,
           image: profile.picture,
-          role: profile.role as string ? profile.role : "user",
+          role: (profile.role as string) ? profile.role : "user",
         };
       },
-      
     }),
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID!,
@@ -30,7 +31,7 @@ export const authOptions: AuthOptions = {
           name: profile.name,
           email: profile.email,
           image: profile.picture.data.url,
-          role: profile.role as string ? profile.role : "user",
+          role: (profile.role as string) ? profile.role : "user",
         };
       },
     }),
@@ -48,7 +49,7 @@ export const authOptions: AuthOptions = {
 
   pages: {
     signIn: "/signin",
-},
+  },
 };
 
 const handler = NextAuth(authOptions);
