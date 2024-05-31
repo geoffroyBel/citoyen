@@ -1,13 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { classNames } from "@/libs";
-import { Menu, MenuButton, MenuItems,MenuItem, Transition } from "@headlessui/react";
+import { Menu, MenuButton, MenuItems, MenuItem, Transition } from "@headlessui/react";
 import { Session } from "next-auth";
 import { signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
-import { Button } from "..";
+import { Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Input, Checkbox } from "@nextui-org/react";
+import { useTheme } from "next-themes";
 
 export default function UserMenu({
   session,
@@ -16,7 +18,22 @@ export default function UserMenu({
   session: Session;
   currentPath: string;
 }): JSX.Element {
-  if (session && session.user) {  
+  const [isModalOpen, setModalOpen] = useState(false);
+  const { theme } = useTheme();
+
+  const handleSignInClick = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleSignOutClick = () => {
+    signOut({ callbackUrl: "/" });
+  };
+
+  if (session && session.user) {
     return (
       <Menu as="div" className="relative ml-3">
         <div>
@@ -44,7 +61,7 @@ export default function UserMenu({
           <MenuItems className="absolute right-0 z-30 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-gray-800 py-1 shadow-lg dark:shadow-zinc-900 ring-1 ring-black ring-opacity-5 focus:outline-none text-gray-700 dark:text-gray-300">
             <MenuItem>
               {() => (
-                <div className="text-sm px-4 pb-2">
+                <div className="text-sm mt-2 px-4 pb-2">
                   <p className="font-regular">Connecté en tant que</p>
                   <p className="font-semibold text-primary dark:text-secondary">{session.user.name}</p>
                 </div>
@@ -66,11 +83,22 @@ export default function UserMenu({
             <MenuItem>
               {({ focus }) => (
                 <Link
-                  href="/profile"
+                  href="/about"
                   className={classNames(
-                    focus
-                      ? "bg-blue-100 dark:bg-primary text-primary dark:text-blue-100"
-                      : "",
+                    focus ? "bg-gray-200 dark:bg-gray-700" : "",
+                    "block md:hidden px-4 py-2 text-sm"
+                  )}
+                >
+                  Proposer un événement
+                </Link>
+              )}
+            </MenuItem>
+            <MenuItem>
+              {({ focus }) => (
+                <Link
+                  href="/admin"
+                  className={classNames(
+                    focus ? "bg-blue-100 dark:bg-primary text-primary dark:text-blue-100" : "",
                     "block px-4 py-2 text-sm cursor-pointer"
                   )}
                 >
@@ -82,12 +110,10 @@ export default function UserMenu({
               {({ focus }) => (
                 <div
                   className={classNames(
-                    focus
-                      ? "bg-red-100 dark:bg-red-500 text-red-500 dark:text-red-100"
-                      : "",
+                    focus ? "bg-red-100 dark:bg-red-500 text-red-500 dark:text-red-100" : "",
                     "block px-4 py-2 text-sm cursor-pointer"
                   )}
-                  onClick={() => signOut({ callbackUrl: "/" })}
+                  onClick={handleSignOutClick}
                 >
                   Déconnexion
                 </div>
@@ -100,14 +126,76 @@ export default function UserMenu({
   }
 
   return (
-    <Button
-      color="primary"
-      size="sm"
-      className="ml-2"
-      onClick={() => signIn()}
-      disabled={currentPath.startsWith("/signin")}
-    >
-      Connexion
-    </Button>
+    <>
+      <Button
+        color={theme === "dark" ? "secondary" : "primary"}
+        size="md"
+        className="mx-2 text-white dark:text-black"
+        onClick={handleSignInClick}
+      >
+        Connexion
+      </Button>
+
+      <Modal isOpen={isModalOpen} onOpenChange={setModalOpen} placement="top-center">
+        <ModalContent>
+          <ModalHeader className="flex flex-col gap-1 text-black dark:text-white">Connexion</ModalHeader>
+          <ModalBody>
+            <Input
+              label="Email"
+              placeholder="Entrez votre adresse email"
+              variant="bordered"
+            />
+            <Input
+              label="Mot de passe"
+              placeholder="Entrez votre mot de passe"
+              type="password"
+              variant="bordered"
+            />
+            <div className="flex py-2 px-1 justify-between">
+              <Checkbox
+                color={theme === "dark" ? "secondary" : "primary"}
+                classNames={{
+                  label: "text-[13px] md:text-[16px]",
+                }}
+              >
+                Se souvenir de moi
+              </Checkbox>
+              <Link color={theme === "dark" ? "secondary" : "primary"} href="#" className={classNames(
+                      "text-[13px]",
+                      "md:text-[16px]",
+                      "transition",
+                      "hover:underline",
+                      "underline-offset-4",
+                      "text-primary",
+                      "dark:text-secondary",
+                      "dark:text-neutral-200",
+                      "dark:hover:underline-neutral-200")}>
+                Mot de passe oublié ?
+              </Link>
+            </div>
+            <div className="flex py-2 px-1 justify-center">
+              <Button onClick={() => signIn("google", { callbackUrl: "http://localhost:3000" })} color={theme === "dark" ? "secondary" : "primary"} className="w-auto lg:w-2/3 flex justify-center items-center">
+                <Image
+                  className="mx-2 drop-shadow-lg"
+                  src="/google.svg"
+                  alt="Google Logo"
+                  width={24}
+                  height={24}
+                />
+                <span className="ml-2 text-white dark:text-black">Connexion avec Google</span>
+              </Button>
+            </div>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="danger" variant="flat" onPress={handleCloseModal} className="dark:text-white">
+              Annuler
+            </Button>
+            <Button color={theme === "dark" ? "secondary" : "primary"} onPress={handleCloseModal} className="text-white dark:text-black">
+              Se connecter
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
   );
 }
