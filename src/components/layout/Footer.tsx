@@ -16,7 +16,7 @@ export default function Footer() {
                   src="/logo-light.png"
                   alt="Logo"
                   width={320}
-                  height={148}
+                  height={198}
                   className="dark:hidden h-16 w-auto hover:opacity-75"
                 />
                 <Image
@@ -294,8 +294,8 @@ export default function Footer() {
           </div>
           </div>
           <div className="mt-[15px] border-b border-neutral-600 dark:border-neutral-400"></div>
-          <div className="w-min-screen flex items-center justify-center pb-8 pt-[9px] md:py-8">
-            <p className="text-[11px] md:text-[14px] text-neutral-900 dark:text-neutral-200 md:text-[12px]">
+          <div className="w-min-screen flex items-center justify-center py-[15px] md:py-6">
+            <p className="text-[11px] md:text-[14px] text-neutral-900 dark:text-neutral-200">
               © 2024 Boujou-Normandie. Tous droits réservés.
             </p>
           </div>

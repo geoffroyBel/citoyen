@@ -3,13 +3,9 @@ import { MainNavbar } from "@/components";
 import Footer from "@/components/layout/Footer";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { Inter, Roboto } from "next/font/google";
+import { Roboto } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "500", "700", "900"],
-});
+const roboto = Roboto({ subsets: ["latin"], weight: ["100", "300", "400", "500", "700", "900"] });
 
 export const metadata: Metadata = {
   description: "lorem ipsum dolor sit amec", //TODO

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Nunito_Sans, Roboto } from "next/font/google";
+import { Roboto } from "next/font/google";
 import Image from "next/image";
 import Logo from "../../public/logo.svg";
 import { twMerge } from "tailwind-merge";
@@ -8,11 +8,7 @@ export const metadata: Metadata = {
   title: "Boujou", //TODO
 };
 
-const nunito = Nunito_Sans({ weight: "400", subsets: ["latin"] });
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "500", "700", "900"],
-});
+const roboto = Roboto({ subsets: ["latin"], weight: ["100", "300", "400", "500", "700", "900"] });
 
 export default function Home() {
   return (
