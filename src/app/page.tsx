@@ -18,7 +18,7 @@ export default function Home() {
           <Image
             src={Logo}
             alt="Logo"
-            width={99}  
+            width={99}
             height={99}
             className="dark:invert mt-[-64px] z-10"
           />

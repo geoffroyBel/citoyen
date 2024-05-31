@@ -19,13 +19,13 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <body className={roboto.className}>
-          <Providers>
-            <div className="flex flex-col min-h-screen">
-              <MainNavbar />
-              <div className="flex-grow">{children}</div>
-              <Footer />
-            </div>
-          </Providers>
+        <Providers>
+          <div className="flex flex-col min-h-screen">
+            <MainNavbar />
+            <div className="flex-grow">{children}</div>
+            <Footer />
+          </div>
+        </Providers>
       </body>
     </html>
   );

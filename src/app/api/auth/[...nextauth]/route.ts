@@ -15,10 +15,9 @@ export const authOptions: AuthOptions = {
           name: `${profile.given_name} ${profile.family_name}`,
           email: profile.email,
           image: profile.picture,
-          role: profile.role as string ? profile.role : "user",
+          role: (profile.role as string) ? profile.role : "user",
         };
       },
-      
     }),
   ],
 
@@ -34,7 +33,7 @@ export const authOptions: AuthOptions = {
 
   pages: {
     signIn: "/signin",
-},
+  },
 };
 
 const handler = NextAuth(authOptions);
