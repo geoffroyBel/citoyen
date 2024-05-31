@@ -8,8 +8,7 @@ const buttonColors = {
   primary: vars.COLORS.primary,
   secondary: vars.COLORS.secondary,
   tertiary: vars.COLORS.tertiary,
-  quaternary: vars.COLORS.quaternary,
-  danger: vars.COLORS.danger,
+  primaryLight: vars.COLORS.primaryLight,
   transparent: vars.COLORS.transparent
 };
 
@@ -31,7 +30,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   radius?: "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
   height?: string;
   width?: string;
-  color?: "primary" | "secondary" | "tertiary" | "quaternary" | "danger" | "transparent";
+  color?: "primary" | "secondary" | "tertiary" | "primaryLight" | "transparent";
   isLoading?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }

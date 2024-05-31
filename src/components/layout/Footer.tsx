@@ -5,26 +5,31 @@ import { classNames } from "@/libs";
 export default function Footer() {
   return (
     <footer className="mt-8">
-      <div className=" bg-white dark:bg-gray-800 pt-9">
+      <div className="bg-secondary dark:bg-gray-800 pt-9">
         <div className="w-full max-w-screen px-4 xl:px-0">
           <div className="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10">
-            <div className="md:w-2/5 pr-3">
+            <div className="md:w-2/5">
               <div className="flex justify-center md:justify-start">
                 <Link href={"/"}>
-                  <Image
-                    priority
-                    src="/logo.svg"
-                    alt="Logo"
-                    width={150}
-                    height={50}
-                    className={classNames(
-                      "dark:invert",
-                      "h-8 w-auto hover:opacity-75"
-                    )}
+                <Image
+                  priority
+                  src="/logo-light.png"
+                  alt="Logo"
+                  width={320}
+                  height={148}
+                  className="dark:hidden h-16 w-auto hover:opacity-75"
+                />
+                <Image
+                  priority
+                  src="/logo-dark.png"
+                  alt="Logo Dark"
+                  width={320}
+                  height={198}
+                  className="hidden dark:block h-16 w-auto hover:opacity-75"
                   />
                 </Link>
               </div>
-              <p className="mt-[18px] text-[13px] text-neutral-900 dark:text-neutral-200">
+              <p className="mt-[18px] text-[13px] md:text-[14px] text-neutral-900 dark:text-neutral-200">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos,
                 fugit non. Incidunt dolorum adipisci, tempore asperiores nemo
                 odio facere officiis enim animi placeat eaque nesciunt alias
@@ -102,7 +107,7 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-            <hr className="mt-[15px] text-dark dark:text-neutral-200 lg:hidden" />
+            <div className="mt-[15px] border-b border-neutral-600 dark:border-neutral-400"></div>
             <div className="w-full md:w-2/5 flex flex-col lg:pl-12 lg:ml-12">
               <div className="mt-[23px] flex text-neutral-900 dark:text-neutral-200">
                 <div className="flex h-[38px] w-[38px] items-center justify-start lg:justify-center rounded-[75%] dark:invert">
@@ -122,11 +127,11 @@ export default function Footer() {
                 <div className="lg:ml-[18px]">
                   <a
                     href="tel:+33123456789"
-                    className="text-[13px]"
+                    className="text-[13px] md:text-[14px] text-neutral-900 hover:underline underline-offset-4 dark:text-neutral-200 dark:hover:underline-neutral-200"
                   >
                     +33 (0)1 23 45 67 89
                   </a>
-                  <p className="text-[10px]">
+                  <p className="text-[10px] md:text-[12px]">
                     Support Number
                   </p>
                 </div>
@@ -149,11 +154,11 @@ export default function Footer() {
                 <div className="lg:ml-[18px]">
                   <a
                     href="mailto:email@lorem.com"
-                    className="text-[13px]"
+                    className="text-[13px] md:text-[14px] text-neutral-900 hover:underline underline-offset-4 dark:text-neutral-200 dark:hover:underline-neutral-200"
                   >
                     email@lorem.com
                   </a>
-                  <p className=" text-[10px]">Support Email</p>
+                  <p className="text-[10px] md:text-[12px]">Support Email</p>
                 </div>
               </div>
               <div className="mt-[23px] flex">
@@ -173,113 +178,125 @@ export default function Footer() {
                 </div>
                 <div className="lg:ml-[18px]">
                   <a
-                    href="mailto:help@lorem.com"
-                    className="text-[13px]"
+                    href="#"
+                    className="text-[13px] md:text-[14px] text-neutral-900 hover:underline underline-offset-4 dark:text-neutral-200 dark:hover:underline-neutral-200"
                   >
                     CESI, Saint-Etienne-du-Rouvray, 76000
                   </a>
-                  <p className="text-[10px]">Address</p>
+                  <p className="text-[10px] md:text-[12px]">Address</p>
                 </div>
               </div>
             </div>
             <div className="hidden md:mt-6 md:flex md:flex-col md:items-start md:items-center md:justify-end sm:flex-row md:mt-0 md:w-1/5">
-              <div>
-                <p className="font-bold text-[16px] text-neutral-900 dark:text-neutral-200">
-                  Pages
-                </p>
-                <ul className="text-[13px]">
-                  <li className="mt-[15px]">
-                    <a
-                    href="#"
-                    rel="noreferrer"
-                    className={classNames(
-                        "text-neutral-900",
-                        "transition",
-                        "hover:font-semibold underline-offset-8",
-                        "dark:text-neutral-200"
-                    )}
-                    >
-                      Lorem
-                    </a>
-                  </li>
-                  <li className="mt-[15px]">
+            <div>
+              <p className="font-bold text-[16px] text-neutral-900 dark:text-neutral-200">
+                Pages
+              </p>
+              <ul className="text-[13px] md:text-[14px]">
+                <li className="mt-[15px]">
                   <a
                     href="#"
                     rel="noreferrer"
                     className={classNames(
-                        "text-neutral-900",
-                        "transition",
-                        "hover:font-semibold underline-offset-8",
-                        "dark:text-neutral-200"
+                      "text-neutral-900",
+                      "transition",
+                      "hover:underline",
+                      "underline-offset-4",
+                      "dark:text-neutral-200",
+                      "dark:hover:underline-neutral-200"
                     )}
-                    >
-                      Ipsum
-                    </a>
-                  </li>
-                  <li className="mt-[15px]">
-                    <a
-                        href="#"
-                        rel="noreferrer"
-                        className={classNames(
-                            "text-neutral-900",
-                            "transition",
-                            "hover:font-semibold underline-offset-8",
-                            "dark:text-neutral-200"
-                        )}
-                    >
-                      Dolor
-                    </a>
-                  </li>
-                  <li className="mt-[15px]">
+                  >
+                    Lorem
+                  </a>
+                </li>
+                <li className="mt-[15px]">
                   <a
                     href="#"
                     rel="noreferrer"
                     className={classNames(
-                        "text-neutral-900",
-                        "transition",
-                        "hover:font-semibold underline-offset-8",
-                        "dark:text-neutral-200"
+                      "text-neutral-900",
+                      "transition",
+                      "hover:underline",
+                      "underline-offset-4",
+                      "dark:text-neutral-200",
+                      "dark:hover:underline-neutral-200"
                     )}
-                    >
-                      Sit
-                    </a>
-                  </li>
-                  <li className="mt-[15px]">
+                  >
+                    Ipsum
+                  </a>
+                </li>
+                <li className="mt-[15px]">
                   <a
                     href="#"
                     rel="noreferrer"
                     className={classNames(
-                        "text-neutral-900",
-                        "transition",
-                        "hover:font-semibold underline-offset-8",
-                        "dark:text-neutral-200"
+                      "text-neutral-900",
+                      "transition",
+                      "hover:underline",
+                      "underline-offset-4",
+                      "dark:text-neutral-200",
+                      "dark:hover:underline-neutral-200"
                     )}
-                    >
-                      Amet
-                    </a>
-                  </li>
-                  <li className="mt-[15px]">
+                  >
+                    Dolor
+                  </a>
+                </li>
+                <li className="mt-[15px]">
                   <a
                     href="#"
                     rel="noreferrer"
                     className={classNames(
-                        "text-neutral-900",
-                        "transition",
-                        "hover:font-semibold underline-offset-8",
-                        "dark:text-neutral-200"
+                      "text-neutral-900",
+                      "transition",
+                      "hover:underline",
+                      "underline-offset-4",
+                      "dark:text-neutral-200",
+                      "dark:hover:underline-neutral-200"
                     )}
-                    >
-                      Privacy policy
-                    </a>
-                  </li>
-                </ul>
-              </div>
+                  >
+                    Sit
+                  </a>
+                </li>
+                <li className="mt-[15px]">
+                  <a
+                    href="#"
+                    rel="noreferrer"
+                    className={classNames(
+                      "text-neutral-900",
+                      "transition",
+                      "hover:underline",
+                      "underline-offset-4",
+                      "dark:text-neutral-200",
+                      "dark:hover:underline-neutral-200"
+                    )}
+                  >
+                    Amet
+                  </a>
+                </li>
+                <li className="mt-[15px]">
+                  <a
+                    href="#"
+                    rel="noreferrer"
+                    className={classNames(
+                      "text-neutral-900",
+                      "transition",
+                      "hover:underline",
+                      "underline-offset-4",
+                      "dark:text-neutral-200",
+                      "dark:hover:underline-neutral-200"
+                    )}
+                  >
+                    Privacy policy
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
-          <hr className="mt-[30px] text-dark dark:text-neutral-200" />
+          </div>
+          <div className="mt-[15px] border-b border-neutral-600 dark:border-neutral-400"></div>
           <div className="w-min-screen flex items-center justify-center pb-8 pt-[9px] md:py-8">
-            <p className="text-[11px] text-neutral-900 dark:text-neutral-200 md:text-[12px]">
-              © 2024 Projet-Citoyen. Tous droits réservés.
+            <p className="text-[11px] md:text-[14px] text-neutral-900 dark:text-neutral-200 md:text-[12px]">
+              © 2024 Boujou-Normandie. Tous droits réservés.
             </p>
           </div>
         </div>

@@ -12,15 +12,23 @@ const config: Config = {
   theme: {
     fontFamily: {
       header: ["Raleway", "sans-serif"],
-      body: ["Open Sans", "sans-serif"],
+      //body: ["Open Sans", "sans-serif"],
+      body: ["Roboto", "sans-serif"],
     },
     extend: {
       colors: {
-      "hero-gradient-from": "rgba(25, 64, 174, 0.95)",
-      "hero-gradient-to": "rgba(45, 47, 144, 0.93)",
-      "hero-gradient-dark-from": "rgba(4, 17, 54, 0.95)",
-      "hero-gradient-dark-to": "rgba(21, 22, 69, 0.93)",
-    },
+        primary: "#007ACC", // bleu
+        primaryLight: "#D5EEFF8A",
+        secondary: "#FDBA74", // orange
+        secondaryLight: "#FFB5622E",
+        secondaryText: "#333333",
+        tertiary: "#F87474", // rouge
+        tertiaryLight: "#FFDFDF",
+        "hero-gradient-from": "rgba(25, 64, 174, 0.95)",
+        "hero-gradient-to": "rgba(45, 47, 144, 0.93)",
+        "hero-gradient-dark-from": "rgba(4, 17, 54, 0.95)",
+        "hero-gradient-dark-to": "rgba(21, 22, 69, 0.93)",
+      },
     }
     
   },

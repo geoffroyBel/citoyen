@@ -5,7 +5,10 @@ import "next-auth/jwt";
 declare module "next-auth" {
   interface currentUser extends User {
     urls: [Url];
+    name: string,
     email: string;
+    image: string,
+    role: string;
   }
 
   interface Session {
