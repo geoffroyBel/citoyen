@@ -1,0 +1,34 @@
+datasource db {
+    provider = "postgresql"
+    url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Category {
+    id Int @id @default(autoincrement())
+    name String
+    events Event[]
+}
+
+model Event {
+    id          Int       @id @default(autoincrement())
+    name        String    @db.VarChar(100)
+    startingDate DateTime
+    endingDate  DateTime
+    latitude    String    @db.VarChar(50)
+    longitude   String    @db.VarChar(100)
+    image       String    @db.VarChar(100)
+    city        String    @db.VarChar(100)
+    address     String    @db.VarChar(100)
+    validatedAt DateTime?
+    cancelledAt DateTime?
+    description String
+    zipCode     String    @db.VarChar(100)
+    category    Category @relation(fields: [categoryId], references: [id])
+    categoryId  Int
+}
+
