@@ -24,6 +24,7 @@ const config: Config = {
         secondaryText: "#333333",
         tertiary: "#F87474", // rouge
         tertiaryLight: "#FFDFDF",
+        transparent: "transparent",
         "hero-gradient-from": "rgba(25, 64, 174, 0.95)",
         "hero-gradient-to": "rgba(45, 47, 144, 0.93)",
         "hero-gradient-dark-from": "rgba(4, 17, 54, 0.95)",

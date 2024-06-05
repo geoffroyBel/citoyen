@@ -15,7 +15,7 @@ export default function CardEvent(): JSX.Element {
         <Image
           alt="Card background"
           className="rounded-xl"
-          src="https://nextui.org/images/hero-card-complete.jpeg"
+          src="/hero-card.jpeg"
           width={800}
         />
         <div className="absolute bottom-6 right-3 bg-secondary rounded-tl-lg rounded-bl-lg p-2 shadow-lg flex items-center z-20">
