@@ -8,7 +8,7 @@ function truncateText(text: string, maxLength: number) {
   return text.slice(0, maxLength) + '...';
 }
 
-export default function CardEvent(): JSX.Element {
+export default function EventCard(): JSX.Element {
   return (
     <Card className="p-1 w-full md:max-w-[300px] dark:bg-transparent transition-transform transform hover:scale-105">
       <CardHeader className="flex-col items-start overflow-visible relative">

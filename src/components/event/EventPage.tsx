@@ -5,10 +5,13 @@ import { Button } from "..";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { InformationsEvent } from "../cards/InformationsEvent";
+import { InformationsEventCard } from "../cards/InformationsEventCard";
+import { useState } from "react";
+import EventGroupCard from "../cards/EventGroupCard";
 
 export default function EventPage() {
     const { theme } = useTheme();
+    const [collectifCount, setCollectifCount] = useState(1);
 
     return (
       <main className="flex flex-col">
@@ -54,34 +57,53 @@ export default function EventPage() {
               </Card>
             </div>
             <div className="flex flex-col md:flex-row md:justify-between items-center mt-6 md:mt-10">
-                <div className="flex flex-col w-full md:w-1/3">
-                    <InformationsEvent 
+                <div className="flex flex-col w-full md:w-5/12 lg:w-1/3">
+                    <InformationsEventCard 
                         iconName="location" 
                         primaryInformation="Centre culturel Pierre Cerdan"
                         secondaryInformation="123 rue de Gessard 76000 Rouen"
                     />
-                    <InformationsEvent 
+                    <InformationsEventCard 
                         iconName="calendar" 
                         primaryInformation="Samedi 01 juin au dimanche 02 juin 2024"
                     />
-                    <InformationsEvent 
+                    <InformationsEventCard 
                         iconName="euro" 
                         primaryInformation="Gratuit"
                         secondaryInformation="Tout public"
                     />
-                    <InformationsEvent 
+                    <InformationsEventCard 
                         iconName="information" 
                         primaryInformation="https://www.rouen.fr"
                         piIsLink
                     />
+                    {collectifCount > 0 ? (
+                        <Card className="rounded-none mb-2 bg-secondaryLight dark:bg-gray-800">
+                            <CardBody className="mx-2 flex flex-row items-baseline">
+                                <p className="text-xl text-tertiary">
+                                    {collectifCount} {collectifCount > 1 ? "collectifs" : "collectif"}
+                                </p>
+                                <p className="ml-1">
+                                    {collectifCount > 1 ? "participent" : "participe"} à cet événement
+                                </p>
+                            </CardBody>
+                        </Card>
+                    ) : (
+                        <></>
+                    )}
                 </div>
-                <Card className="w-full md:w-7/12 mt-4 md:mt-0 mr-0 md:mr-10 rounded-none bg-white dark:bg-gray-800 p-5">
+                <Card className="w-full md:w-7/12 lg:w-8/12 mt-2 md:mt-0 mx-2 md:mx-10 rounded-none bg-white dark:bg-gray-800 p-5">
                     <CardBody className="leading-relaxed text-justify">
                         Diam eirmod rebum ea sadipscing. Congue takimata aliquyam sit nonumy takimata vero elitr sed liber iriure accusam. Dolor at adipiscing tation ea eirmod duis hendrerit clita vero labore dolor. Accusam magna justo blandit tempor diam illum sit assum ipsum et consequat soluta facilisis sed labore dolor invidunt. Vero dolore dolor sit rebum lorem adipiscing diam eum labore invidunt illum dolor sed. Eirmod quod takimata eum blandit ea et tempor sanctus odio congue kasd nulla magna diam sanctus praesent eirmod takimata. Sed ut commodo est eirmod labore amet takimata sanctus ipsum et tempor takimata ipsum assum labore. Augue lorem no sea ad takimata dolore et vero et magna.
                     </CardBody>
                 </Card>
             </div>
           </article>
+          {collectifCount > 0 ? (
+            <EventGroupCard />
+          ) : (
+            <></>
+          )} 
         </section>
       </main>
     );

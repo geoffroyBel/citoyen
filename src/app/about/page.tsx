@@ -3,7 +3,7 @@ import SearchInput2 from "@/components/inputs/SearchInput2";
 import SearchInput from "@/components/inputs/SearchInput";
 import { Metadata } from "next";
 import MedievalTentIcon from "@/components/icons/MedievalTentIcon";
-import CardEvent from "@/components/cards/CardEvent";
+import CardEvent from "@/components/cards/EventCard";
 
 export const metadata: Metadata = {
   title: "Test",
@@ -50,6 +50,7 @@ export default function AboutPage() {
         </div>
       </section>
       <section className="px-3 md:px-0 md:pl-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <CardEvent />
         <CardEvent />
         <CardEvent />
         <CardEvent />

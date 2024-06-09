@@ -29,7 +29,7 @@ export default function Footer() {
                   />
                 </Link>
               </div>
-              <p className="mt-[18px] text-[13px] md:text-[14px] text-neutral-900 dark:text-neutral-200">
+              <p className="mt-[18px] text-[13px] md:text-[14px] text-justify text-neutral-900 dark:text-neutral-200">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos,
                 fugit non. Incidunt dolorum adipisci, tempore asperiores nemo
                 odio facere officiis enim animi placeat eaque nesciunt alias
