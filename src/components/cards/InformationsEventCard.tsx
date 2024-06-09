@@ -11,7 +11,7 @@ export interface InformationsEventProps {
     siIsLink?: Boolean;
 }
 
-export const InformationsEvent: React.FC<InformationsEventProps> = ({ iconName, primaryInformation, secondaryInformation, piIsLink, siIsLink }) => {
+export const InformationsEventCard: React.FC<InformationsEventProps> = ({ iconName, primaryInformation, secondaryInformation, piIsLink, siIsLink }) => {
     const { theme } = useTheme();
 
     return (
