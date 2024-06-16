@@ -12,6 +12,7 @@ export async function POST(req: NextRequest) {
       endingDate,
       startingDate,
       address,
+      image,
       city,
       zipCode,
       latitude,
@@ -31,7 +32,7 @@ export async function POST(req: NextRequest) {
         zipCode: zipCode,
         latitude: latitude,
         longitude: longitude,
-        image: "whatever",
+        image: image,
         category: {
           connect: {
             id: categoryId,
