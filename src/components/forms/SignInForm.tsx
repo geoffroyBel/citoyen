@@ -18,7 +18,7 @@ export default function SignInForm() {
     router.replace("/profile");
   } else if (mounted)
     return (
-      <section className="auth-card mx-4 md:mx-auto my-12 flex min-h-full flex-1 flex-col px-6 py-12 lg:px-8">
+      <section className="auth-card mx-4 md:mx-auto my-12 flex min-h-full flex-1 flex-col px-6 py-12 lg:px-8 border-1">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Image
             className="mx-auto"
@@ -33,7 +33,7 @@ export default function SignInForm() {
           </h2>
         </div>
         <div className="flex flex-col gap-4 lg:flex lg:flex-col lg:items-center">
-          <Button onClick={() => signIn("google", { callbackUrl: "http://localhost:3000" })} color="secondary" className="w-full lg:w-2/3 flex justify-between items-center">
+          <Button onClick={() => signIn("google", { callbackUrl: "http://localhost:3000" })} color="primary" className="w-full lg:w-2/3 flex justify-between items-center">
             <Image
               className="mx-2 drop-shadow-lg"
               src="/google.svg"
@@ -43,7 +43,7 @@ export default function SignInForm() {
             />
             <span className="ml-2">Connexion avec Google</span>
           </Button>
-          <Button onClick={() => signIn("github", { callbackUrl: "/" })} color="tertiary" className="w-full lg:w-2/3 flex justify-between items-center">
+          <Button onClick={() => signIn("facebook", { callbackUrl: "/" })} color="primary" className="w-full lg:w-2/3 flex justify-between items-center">
             <Image
               className="mx-2 drop-shadow-lg"
               src="/github.svg"
@@ -53,7 +53,7 @@ export default function SignInForm() {
             />
             <span className="ml-2">Connexion avec Facebook</span>
           </Button>
-          <Button onClick={() => signIn("apple", { callbackUrl: "/" })} color="quaternary" className="w-full lg:w-2/3 flex justify-between items-center">
+          <Button onClick={() => signIn("apple", { callbackUrl: "/" })} color="primary" className="w-full lg:w-2/3 flex justify-between items-center">
             <Image
               className="mx-2 drop-shadow-lg dark:invert"
               src="/apple.svg"

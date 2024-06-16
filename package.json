@@ -1,6 +1,6 @@
 {
-  "name": "Boujou-Normandie",
-  "version": "0.1.1",
+  "name": "boujou-normandie",
+  "version": "0.1.3",
   "private": true,
   "scripts": {
     "dev": "next dev",
