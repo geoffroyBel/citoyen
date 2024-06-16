@@ -9,13 +9,20 @@ import { ThemeToggle, UserMenu } from "..";
 import { Button } from "..";
 import { useTheme } from "next-themes";
 
+import EventForm from "../forms/EventForm";
+import ButtonModal from "../forms/ButtonModal";
+import { useEffect } from "react";
+
 export default function MainNavbar() {
   const { data: session } = useSession();
   const currentPath = usePathname();
   const { theme } = useTheme();
 
   return (
-    <Disclosure as="nav" className="w-screen bg-white dark:bg-gray-800 select-none border-b border-neutral-400 dark:border-neutral-400">
+    <Disclosure
+      as="nav"
+      className="w-screen bg-white dark:bg-gray-800 select-none border-b border-neutral-400 dark:border-neutral-400"
+    >
       <div className="mx-auto max-w-screen px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="flex flex-1 items-center justify-start">
@@ -43,7 +50,10 @@ export default function MainNavbar() {
 
           {session && session.user ? (
             <div className="hidden md:flex flex-1 justify-center">
-              <Link href={"/about"}>
+              <ButtonModal title="Proposer un événement">
+                <EventForm userId={session.user.id} />
+              </ButtonModal>
+              {/* <Link href={"/about"}>
                 <Button
                   color={theme === "dark" ? "secondary" : "primary"}
                   size="sm"
@@ -51,7 +61,7 @@ export default function MainNavbar() {
                 >
                   Proposer un événement
                 </Button>
-              </Link>
+              </Link> */}
             </div>
           ) : (
             <></>
