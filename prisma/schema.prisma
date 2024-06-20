@@ -14,7 +14,86 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model DriverPassenger {
+  driverId  Int
+  userId    Int
+  joinedAt  DateTime @default(now())
 
+  driver    Driver   @relation(fields: [driverId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@id([driverId, userId])
+  @@index([driverId], name: "idx_driver_passenger_driverId")
+  @@index([userId], name: "idx_driver_passenger_userId")
+}
+
+model Driver {
+  id           Int      @id @default(autoincrement())
+  quantity     Int
+  city         String
+  adress       String
+  description  String
+  zipcode      String
+  startingdate DateTime
+  endingdate   DateTime
+  longitude    String
+  latitude     String
+  userId       Int
+  user         User     @relation(fields: [userId], references: [id])
+  passengers   DriverPassenger[]
+  groups       Group[]
+}
+
+model Group {
+  id       Int       @id @default(autoincrement())
+  name     String
+  userId   Int
+  eventId  Int
+  creator  User      @relation("createdGroups", fields: [userId], references: [id])
+  event    Event     @relation(fields: [eventId], references: [id])
+  driver   Driver   @relation(fields: [driverId], references: [id])
+  driverId Int
+  members  UserGroup[]
+}
+
+model UserGroup {
+  userId  Int
+  groupId Int
+  joinedAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id])
+  group  Group  @relation(fields: [groupId], references: [id])
+
+  @@id([userId, groupId])
+  @@index([userId], name: "idx_user_group_userId")
+  @@index([groupId], name: "idx_user_group_groupId")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String  
+  email     String   @unique
+  password  String
+  avatar    String   
+  firstName String   
+  lastName  String
+  adress    String
+  latitude  String
+  longitude String
+  role      Role     @relation(fields: [roleId], references: [id])
+  roleId    Int
+  groups    UserGroup[]
+  createdGroups Group[] @relation("createdGroups")
+  drivers       Driver[]
+  passengerIn   DriverPassenger[]
+}
+
+model Role {
+  id   Int    @id @default(autoincrement())
+  name String
+  users User[]
+}
+ 
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -40,18 +119,6 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  role          String
-  accounts      Account[]
-  sessions      Session[]
-  events        Event[]
 }
 
 model VerificationToken {
@@ -84,6 +151,5 @@ model Event {
     zipCode     String    @db.VarChar(100)
     category    Category @relation(fields: [categoryId], references: [id])
     categoryId  Int
-    user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-    userId      String
+    groups  Group[]
 }
