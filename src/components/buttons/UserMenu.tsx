@@ -44,8 +44,8 @@ export default function UserMenu({
               width={36}
               height={36}
               className="rounded-full border-1 border-gray-600 p-0.5"
-              src={session.user.image ?? ""}
-              alt={session.user.name ?? "User"}
+              src={session.user.avatar ?? ""}
+              alt={session.user.fullname ?? "User"}
             />
           </MenuButton>
         </div>
@@ -63,7 +63,9 @@ export default function UserMenu({
               {() => (
                 <div className="text-sm mt-2 px-4 pb-2">
                   <p className="font-regular">Connecté en tant que</p>
-                  <p className="font-semibold text-primary dark:text-secondary">{session.user.name}</p>
+                  <p className="font-semibold text-primary dark:text-secondary">{session.user.fullname}</p>
+                  <p>{session.user.roleId} / ROLE</p>
+                  <p>{session.user.id} / ID</p>
                 </div>
               )}
             </MenuItem>
@@ -93,19 +95,23 @@ export default function UserMenu({
                 </Link>
               )}
             </MenuItem>
-            <MenuItem>
-              {({ focus }) => (
-                <Link
-                  href="/admin"
-                  className={classNames(
-                    focus ? "bg-blue-100 dark:bg-primary text-primary dark:text-blue-100" : "",
-                    "block px-4 py-2 text-sm cursor-pointer"
-                  )}
-                >
-                  Accès admin
-                </Link>
-              )}
-            </MenuItem>
+            {/* { session && session.user.isAdmin ? ( */}
+              <MenuItem>
+                {({ focus }) => (
+                  <Link
+                    href="/admin"
+                    className={classNames(
+                      focus ? "bg-blue-100 dark:bg-primary text-primary dark:text-blue-100" : "",
+                      "block px-4 py-2 text-sm cursor-pointer"
+                    )}
+                  >
+                    Accès admin
+                  </Link>
+                )}
+              </MenuItem>
+            {/* ) : (
+              <></>
+            )} */}
             <MenuItem>
               {({ focus }) => (
                 <div

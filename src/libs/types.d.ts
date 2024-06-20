@@ -1,21 +1,26 @@
-import { Url, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import "next-auth";
 import "next-auth/jwt";
 
 declare module "next-auth" {
-  interface currentUser extends User {
-    urls: [Url];
-    name: string,
+  interface CustomUser extends User  {
+    id: int;
+    fullname: string;
+    avatar?: string;
+    longitude?: string;
+    latitude?: string;
+    adress?: string;
+    password: string;
+    avatar?: string;
     email: string;
-    image: string,
-    role: string;
+    roleId: number;
   }
 
   interface Session {
-    user: currentUser;
+    user: CustomUser;
   }
 }
 
 declare module "next-auth/jwt" {
-  type JWT = User;
+  type JWT = CustomUser;
 }
