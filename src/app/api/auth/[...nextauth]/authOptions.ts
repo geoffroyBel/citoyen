@@ -28,17 +28,17 @@ const authOptions: AuthOptions = {
     async signIn() {
       return true;
     },
-    async jwt({ token, user } : {token: JWT, user: CustomUser }) {
+    async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
-        token.username = user.fullname ?? "";
-        token.email = user.email ?? "";
-        token.avatar = user.avatar ?? "";
-        token.roleId = user.roleId ?? 1;
-        token.adress = user.adress ?? "";
-        token.latitude = user.latitude ?? "";
-        token.longitude = user.longitude ?? "";
-        token.isAdmin = user.isAdmin ?? false;
+        const customUser = user as CustomUser;
+        token.id = customUser.id;
+        token.username = customUser.fullname ?? "";
+        token.email = customUser.email ?? "";
+        token.avatar = customUser.avatar ?? "";
+        token.roleId = customUser.roleId ?? 1;
+        token.adress = customUser.adress ?? "";
+        token.latitude = customUser.latitude ?? "";
+        token.longitude = customUser.longitude ?? "";
       }
       return token;
     },
