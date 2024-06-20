@@ -3,6 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient } from "@prisma/client";
 import { JWT } from "next-auth/jwt";
 
+
 const authOptions: AuthOptions = {
   session: {
     strategy: "jwt",
@@ -42,6 +43,7 @@ const authOptions: AuthOptions = {
       return token;
     },
     async session({ session, token }) {
+      
       session.user.id = token.id;
       session.user.fullname = token.username;
       session.user.email = token.email;
@@ -50,6 +52,7 @@ const authOptions: AuthOptions = {
       session.user.adress = token.adress;
       session.user.latitude = token.latitude;
       session.user.longitude = token.longitude;
+
       return session;
     },
   },
