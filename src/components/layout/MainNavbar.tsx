@@ -53,16 +53,7 @@ export default function MainNavbar() {
               <ButtonModal title="Proposer un événement">
                 <EventForm userId={session.user.id} />
               </ButtonModal>
-              {/* <Link href={"/about"}>
-                <Button
-                  color={theme === "dark" ? "secondary" : "primary"}
-                  size="sm"
-                  className="ml-2 font-medium dark:text-secondaryText"
-                >
-                  Proposer un événement
-                </Button>
-              </Link> */}
-            </div>
+            </div>    
           ) : (
             <></>
           )}

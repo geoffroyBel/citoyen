@@ -1,23 +1,24 @@
 import { useSpring, motion } from "framer-motion";
 import { useEffect } from "react";
+
 interface LoaderProps {
   totalSteps: number;
   currentStep: number;
   [key: string]: any;
 }
 interface TileProps {
-  isSubimted: boolean;
+  isSubmitted: boolean;
 }
-export const Tile = ({ isSubimted }: TileProps) => {
+export const Tile = ({ isSubmitted }: TileProps) => {
   const scaleX = useSpring(0, { stiffness: 1000, damping: 100 });
 
   useEffect(() => {
-    if (isSubimted) {
+    if (isSubmitted) {
       scaleX.set(1);
     } else {
       scaleX.set(0);
     }
-  }, [isSubimted]);
+  }, [isSubmitted]);
 
   return (
     <motion.div
@@ -34,16 +35,18 @@ export const Tile = ({ isSubimted }: TileProps) => {
     ></motion.div>
   );
 };
-export default ({ totalSteps = 2, currentStep, ...rest }: LoaderProps) => {
+const Loader = ({ totalSteps = 2, currentStep, ...rest }: LoaderProps) => {
   return (
     <div {...rest}>
       {[...new Array(totalSteps)].map((el, i) => {
         return (
           <div key={i} className="relative flex-1 h-full bg-blue-200">
-            <Tile isSubimted={i <= currentStep} />
+            <Tile isSubmitted={i <= currentStep} />
           </div>
         );
       })}
     </div>
   );
 };
+
+export default Loader;
