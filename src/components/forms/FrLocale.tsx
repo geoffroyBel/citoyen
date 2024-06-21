@@ -1,4 +1,4 @@
-import { fr } from "@mui/x-date-pickers/locale";
+import fr from "@mui/x-date-pickers/locales/frFR";
 
 const frLocale = {
   ...fr,
