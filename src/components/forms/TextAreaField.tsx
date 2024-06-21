@@ -12,7 +12,7 @@ interface CustomTextFieldProps {
   [key: string]: any;
 }
 
-export default ({
+const TextAreaField: React.FC<CustomTextFieldProps> = ({
   name,
   control,
   label,
@@ -33,12 +33,11 @@ export default ({
     <Textarea
       variant="bordered"
       label="Description"
-      placeholder="Enter your description"
+      placeholder="Décrivez votre événement"
       {...field}
       isInvalid={!!error?.message}
       errorMessage={error?.message}
       {...rest}
-      description="Enter a concise description of your project."
       classNames={{
         label: "text-primary",
         input: [
@@ -64,3 +63,5 @@ export default ({
     />
   );
 };
+
+export default TextAreaField;

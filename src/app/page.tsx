@@ -57,7 +57,7 @@ export default function Home() {
           >
             Boujou Normandie
           </h1>
-          <div className="w-2/5">
+          <div className="w-full md:w-2/5">
             <SearchInput placeholder="Rechercher un événement" />
           </div>
           <section className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

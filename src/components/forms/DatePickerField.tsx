@@ -5,12 +5,15 @@ import Stack from "@mui/material/Stack";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { useController } from "react-hook-form";
 import dayjs, { Dayjs } from "dayjs";
 import TextField from "@mui/material/TextField";
+import localizedFormat from 'dayjs/plugin/localizedFormat';
+import 'dayjs/locale/fr';
+
+dayjs.extend(localizedFormat);
+dayjs.locale('fr');
 
 interface CustomTextFieldProps {
   name: string;
@@ -35,7 +38,7 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 
-export default ({
+const DatePickerField: React.FC<CustomTextFieldProps> = ({
   name,
   control,
   label,
@@ -52,14 +55,16 @@ export default ({
     defaultValue: defaultValue || "",
   });
   const handleChange = (value: dayjs.Dayjs | null) => {
-    if (value) onChange(dayjs(value).format());
+    if (value) onChange(value.format("DD/MM/YYYY hh:mm"));
   };
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <LocalizationProvider dateAdapter={AdapterDayjs} >
       <DateTimePicker
         label={label}
-        value={dayjs(value)}
         onChange={handleChange}
+        format="DD/MM/YYYY hh:mm"
+        ampm={false}
+        disablePast={true}
         slotProps={{
           textField: {
             sx: {
@@ -86,3 +91,5 @@ export default ({
     </LocalizationProvider>
   );
 };
+
+export default DatePickerField;

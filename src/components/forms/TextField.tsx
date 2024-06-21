@@ -16,7 +16,7 @@ interface CustomTextFieldProps {
   [key: string]: any;
 }
 
-export default ({
+const Textfield: React.FC<CustomTextFieldProps> = ({
   name,
   control,
   label,
@@ -33,7 +33,6 @@ export default ({
     control,
     defaultValue: defaultValue || "",
   });
-
   return (
     <Input
       label={label}
@@ -50,7 +49,7 @@ export default ({
           <Image
             className="mx-2 drop-shadow-lg"
             src={`/icons/form/${endIcon}.png`}
-            alt="Apple Logo"
+            alt="Icon"
             width={24}
             height={24}
           />
@@ -81,3 +80,5 @@ export default ({
     />
   );
 };
+
+export default Textfield;

@@ -10,6 +10,8 @@ import Link from "next/link";
 import { Fragment } from "react";
 import { Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Input, Checkbox } from "@nextui-org/react";
 import { useTheme } from "next-themes";
+import ButtonModal from "../forms/ButtonModal";
+import EventForm from "../forms/EventForm";
 
 export default function UserMenu({
   session,
@@ -71,6 +73,13 @@ export default function UserMenu({
             </MenuItem>
             <MenuItem>
               {({ focus }) => (
+                <ButtonModal title="Proposer un événement">
+                  <EventForm userId={session.user.id} />
+                </ButtonModal>
+              )}
+            </MenuItem>
+            <MenuItem>
+              {({ focus }) => (
                 <Link
                   href="/profile"
                   className={classNames(
@@ -79,19 +88,6 @@ export default function UserMenu({
                   )}
                 >
                   Profil
-                </Link>
-              )}
-            </MenuItem>
-            <MenuItem>
-              {({ focus }) => (
-                <Link
-                  href="/about"
-                  className={classNames(
-                    focus ? "bg-gray-200 dark:bg-gray-700" : "",
-                    "block md:hidden px-4 py-2 text-sm"
-                  )}
-                >
-                  Proposer un événement
                 </Link>
               )}
             </MenuItem>
