@@ -9,14 +9,14 @@ import Image from "next/image";
 interface CustomTextFieldProps {
   name: string;
   control?: any;
-  label: string;
+  label?: string;
   defaultValue?: string;
   placeholder?: string;
   endIcon?: string;
   [key: string]: any;
 }
 
-export default ({
+const TextField = ({
   name,
   control,
   label,
@@ -48,7 +48,7 @@ export default ({
       endContent={
         endIcon && (
           <Image
-            className="mx-2 drop-shadow-lg"
+            className="drop-shadow-lg"
             src={`/icons/form/${endIcon}.png`}
             alt="Apple Logo"
             width={24}
@@ -65,6 +65,7 @@ export default ({
         ],
         innerWrapper: "bg-transparent",
         inputWrapper: [
+          "h-[60px]",
           "bg-page",
           //   "dark:bg-default/60",
           "backdrop-blur-xl",
@@ -81,3 +82,5 @@ export default ({
     />
   );
 };
+
+export default TextField;

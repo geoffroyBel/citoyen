@@ -9,8 +9,8 @@ import { ThemeToggle, UserMenu } from "..";
 import { Button } from "..";
 import { useTheme } from "next-themes";
 
-import EventForm from "../forms/EventForm";
-import ButtonModal from "../forms/ButtonModal";
+import EventForm from "../forms/ServiceForm";
+import ButtonModal from "../forms/utils/Modal";
 import { useEffect } from "react";
 
 export default function MainNavbar() {
@@ -50,7 +50,7 @@ export default function MainNavbar() {
 
           {session && session.user ? (
             <div className="hidden md:flex flex-1 justify-center">
-              <ButtonModal title="Proposer un événement">
+              <ButtonModal title="Proposer un événement" isBlue={true}>
                 <EventForm userId={session.user.id} />
               </ButtonModal>
               {/* <Link href={"/about"}>

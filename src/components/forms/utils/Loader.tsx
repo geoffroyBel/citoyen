@@ -17,7 +17,7 @@ export const Tile = ({ isSubimted }: TileProps) => {
     } else {
       scaleX.set(0);
     }
-  }, [isSubimted]);
+  }, [isSubimted, scaleX]);
 
   return (
     <motion.div
@@ -34,7 +34,7 @@ export const Tile = ({ isSubimted }: TileProps) => {
     ></motion.div>
   );
 };
-export default ({ totalSteps = 2, currentStep, ...rest }: LoaderProps) => {
+const Loader = ({ totalSteps = 2, currentStep, ...rest }: LoaderProps) => {
   return (
     <div {...rest}>
       {[...new Array(totalSteps)].map((el, i) => {
@@ -47,3 +47,4 @@ export default ({ totalSteps = 2, currentStep, ...rest }: LoaderProps) => {
     </div>
   );
 };
+export default Loader;

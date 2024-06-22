@@ -12,7 +12,7 @@ interface CustomTextFieldProps {
   [key: string]: any;
 }
 
-export default ({
+const TextAreaField = ({
   name,
   control,
   label,
@@ -32,23 +32,23 @@ export default ({
   return (
     <Textarea
       variant="bordered"
-      label="Description"
-      placeholder="Enter your description"
+      placeholder={placeholder}
       {...field}
       isInvalid={!!error?.message}
       errorMessage={error?.message}
       {...rest}
-      description="Enter a concise description of your project."
       classNames={{
         label: "text-primary",
         input: [
           "bg-transparent",
           "text-gray-600",
           "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+          "h-[150px]",
         ],
         innerWrapper: "bg-transparent",
         inputWrapper: [
           "bg-page",
+          "h-[350px]",
           //   "dark:bg-default/60",
           "backdrop-blur-xl",
           "backdrop-saturate-200",
@@ -64,3 +64,5 @@ export default ({
     />
   );
 };
+
+export default TextAreaField;
