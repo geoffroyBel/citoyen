@@ -26,15 +26,15 @@ export default function ThemeToggle(): JSX.Element | null {
   return (
     <button
       type="button"
-      className="relative rounded-full p-1 text-gray-600 dark:text-white hover:text-gray-400 dark:hover:text-gray-400"
+      className="relative rounded-full p-1 mr-2 text-gray-600 dark:text-white hover:text-gray-400 dark:hover:text-gray-400"
       onClick={handleChange}
     >
       <span className="absolute -inset-1.5" />
       <span className="sr-only">Theme</span>
       {theme === "light" ? (
-        <SunIcon className="h-6 w-6" aria-hidden="true" />
+        <SunIcon className="h-8 w-8" aria-hidden="true" />
       ) : (
-        <MoonIcon className="h-6 w-6" aria-hidden="true" />
+        <MoonIcon className="h-8 w-8" aria-hidden="true" />
       )}
     </button>
   );
