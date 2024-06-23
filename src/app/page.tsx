@@ -8,7 +8,10 @@ export const metadata: Metadata = {
   title: "Boujou", //TODO
 };
 
-const roboto = Roboto({ subsets: ["latin"], weight: ["100", "300", "400", "500", "700", "900"] });
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700", "900"],
+});
 
 export default function Home() {
   return (
@@ -31,7 +34,7 @@ export default function Home() {
             Application
           </h1>
           <p className="text-2xl text-center mt-2 text-neutral-700 dark:text-neutral-300 relative z-20">
-            Projet citoyen
+            Projet citoyen Normand
           </p>
         </div>
       </section>
